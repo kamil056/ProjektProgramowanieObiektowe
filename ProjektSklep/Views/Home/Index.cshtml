@@ -1,0 +1,81 @@
+﻿@model ProjektSklep.ViewModels.HomeViewModel
+@using  ProjektSklep.Infrastructure
+	
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<nav class="KategorieVertical">
+    <ul>
+        @foreach(var Item  in Model.Kategorie)
+    {
+        <li>
+            <article>
+                <a href="@Url.Action("Lista", "Produkty", new {nazwaKategori = Item.NazwaKategorii.ToLower()})"> 
+                @Item.NazwaKategorii
+            </a>
+                
+                
+                </article>
+        </li>
+
+    }
+       </ul>
+
+</nav>	
+
+
+<section>
+    <ul class="KursyTrzyKolumny duzaListaKursy">
+        @*//BestSeller*@
+        @foreach (var itemBS in Model.BestSeller)
+        {
+            <li>
+                <article>
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("DodajDoKoszyka", "Koszyk", new {produktId = itemBS.ProduktId})">
+                        <img src=@Url.Content("~/Content/Images/koszyk.png") />
+
+                    </a>
+                    <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly", "Produkty", new {produktId = itemBS.ProduktId})">
+                        <div class="bestsellerFlag"></div>
+                        <img class="kurs" src=@Url.IkonyProduktowSciezka(itemBS.NazwaPlikuObrazka) />
+                        <h1>
+                            @itemBS.NazwaProduktu
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+
+    </ul>
+</section>
+<section>
+    <ul class="KursyTrzyKolumny duzaListaKursy">
+        @*//Nowosc*@
+         @foreach (var ItemNew in Model.Nowosc)
+        {
+            <li>
+                <article>
+                    <a class="dodajDoKoszykaLink" href="@Url.Action("DodajDoKoszyka", "Koszyk", new {produktId = ItemNew.ProduktId})">
+                        <img src=@Url.Content("~/Content/Images/koszyk.png") />
+
+                    </a>
+                    <a class="kursSzczegolyLink" href="@Url.Action("Szczegoly", "Produkty", new {produktId = ItemNew.ProduktId})">
+                        <div class="newFlag"></div>
+                        <img class="kurs" src=@Url.IkonyProduktowSciezka(ItemNew.NazwaPlikuObrazka) />
+                        <h1>
+                            @ItemNew.NazwaProduktu
+                        </h1>
+                    </a>
+                </article>
+            </li>
+        }
+
+    </ul>
+</section>
+
+
+
+
+

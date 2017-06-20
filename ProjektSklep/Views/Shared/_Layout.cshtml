@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/Site.css")"  />
+</head>
+<body>
+<header>
+    <div style="overflow: hidden">
+
+        <a id="indexHeaderLogo" href="@Url.Content("~/")">
+            <img src="@Url.Content("~/Content/Images/suplementy.png")" width="1100px" class="center" />
+        </a>
+        <a id="koszykHeaderLink" href="link">
+            Koszyk (0)
+            <span></span>
+        </a>
+    </div>
+</header>
+
+<div>
+    @RenderBody();
+</div>    
+
+<footer>
+    <nav>
+        <ul>
+           <li><a href="@Url.Action("StaticPage", "Home", new {Page = "Onas"})"> O nas </a></li>
+           <li><a href="@Url.Action("StaticPage", "Home", new {Page = "Pomoc"})"> Pomoc </a></li>
+           <li><a href="@Url.Action("StaticPage", "Home", new {Page = "Regulamin"})"> Regulamin </a></li>
+           <li><a href="@Url.Action("StaticPage", "Home", new {Page = "Kontakt"})"> Kontakt </a></li>
+           
+        </ul>
+    </nav>
+    <div id="footerLogo">
+    </div>       
+    <div id="footerCopyright">
+        Copyright &copy; 2017 P. Kursy
+    </div>
+</footer>
+    @RenderSection("Script", required : false)
+</body>
+</html>
